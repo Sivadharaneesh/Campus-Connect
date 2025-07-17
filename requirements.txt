@@ -1,2 +1,7 @@
 userlogin:
 npm install express mongoose dotenv bcryptjs jsonwebtoken nodemailer crypto cors nodemailer
+
+    frontend:
+    npm install
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p

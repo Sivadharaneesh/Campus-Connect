@@ -1,22 +1,177 @@
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
 }
 
-.auth-box {
+:root {
+  --bg-light: linear-gradient(to right, #d9a7c7, #fffcdc);
+  --bg-dark: #1e1e2f;
+  --box-light: rgba(255, 255, 255, 0.15);
+  --box-dark: rgba(40, 40, 60, 0.9);
+  --text-light: #333;
+  --text-dark: #fff;
+  --btn-light: #333;
+  --btn-dark: #eee;
+}
+
+/* Light/Dark Modes */
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Auth Container */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   padding: 2rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Auth Box */
+.auth-box {
+  background: var(--box-light);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.4s;
+}
+
+body.dark .auth-box {
+  background: var(--box-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tab Buttons */
+.tab-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .tab-buttons button {
-  margin-right: 10px;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: 2px solid #999;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.tab-buttons .active,
+.tab-buttons button:hover {
+  background-color: #444;
+  color: white;
+  border-color: #444;
+}
+
+body.dark .tab-buttons .active,
+body.dark .tab-buttons button:hover {
+  background-color: #eee;
+  color: #111;
+  border-color: #eee;
+}
+
+/* Form Inputs */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 input {
-  display: block;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.85);
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #666;
+}
+
+body.dark input {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-color: #555;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--btn-light);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+body.dark button[type="submit"] {
+  background-color: var(--btn-dark);
+  color: #111;
+}
+
+button[type="submit"]:hover {
+  background-color: #222;
+}
+
+body.dark button[type="submit"]:hover {
+  background-color: #ccc;
+}
+
+/* Toggle Theme Button */
+.theme-toggle {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: transparent;
+  border: 2px solid #999;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #444;
+  color: white;
+}
+
+body.dark .theme-toggle:hover {
+  background-color: #eee;
+  color: #000;
+}
+
+/* Home Page */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .auth-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .tab-buttons button {
+    font-size: 0.9rem;
+  }
 }

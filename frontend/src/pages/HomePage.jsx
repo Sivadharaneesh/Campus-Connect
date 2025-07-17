@@ -1,3 +1,6 @@
+import "../Auth.css";
+
+
 function HomePage() {
   return (
     <div style={{ padding: "2rem" }}>
