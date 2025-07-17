@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 document.body.classList.add('light')
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
