@@ -1,0 +1,154 @@
+/* Full page background with blur and image */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('./assets/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(4px);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background: #000 !important;
+  backdrop-filter: none;
+  color: white;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+body.dark .auth-box {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 4px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+form input::placeholder {
+  color: #ddd;
+}
+
+body.dark form input {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #ffffff55;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #ffffff88;
+}
+
+/* Forgot and back links (no hover underline) */
+.forgot-link {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-align: right;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-to-login {
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Remove hover effects */
+.forgot-link:hover,
+.back-to-login:hover {
+  text-decoration: none;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  color: black;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark .theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
