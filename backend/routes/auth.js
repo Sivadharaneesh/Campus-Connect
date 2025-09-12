@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const User = require("../models/User");
+const User2 = require("../models/User2");
 require("dotenv").config();
 
 const router = express.Router();
@@ -18,7 +19,7 @@ const transporter = nodemailer.createTransport({
 
 // Signup
 router.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, email, password } = req.body;
   try {
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ message: "Email already exists" });
@@ -28,12 +29,24 @@ router.post("/signup", async (req, res) => {
 
     const user = new User({
       email,
+      username,
       password: hashedPassword,
       role: email === process.env.ADMIN_EMAIL ? "admin" : "user",
       verified: false,
       verificationToken,
     });
     await user.save();
+
+    // 🔹 Create a dashboard entry for this user
+    const dashboard = new User2({
+      email,
+      username,
+      name: "",
+      dob: "",
+      phone: "",
+      image: "",
+    });
+    await dashboard.save();
 
     const verifyURL = `http://localhost:5000/api/auth/verify/${verificationToken}`;
 
@@ -49,6 +62,7 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 // Verify Email
 router.get("/verify/:token", async (req, res) => {
@@ -80,11 +94,28 @@ router.post("/login", async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
 
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+// after you have `user` from DB
+const token1 = jwt.sign(
+  { id: user._id, role: user.role, email: user.email }, // ⬅️ also include email in payload
+  process.env.JWT_SECRET,
+  { expiresIn: "1h" }
+);
 
-    res.json({ message: "Login successful", token, role: user.role });
+const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin }, 
+      process.env.JWT_SECRET, 
+      { expiresIn: '7d' }
+    );
+
+res.json({
+  message: "Login successful",
+  token1,
+  token,
+  role: user.role,
+  email: user.email, // ⬅️ return email to frontend
+});
+
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
