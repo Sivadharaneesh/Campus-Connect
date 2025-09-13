@@ -1,9 +1,26 @@
+// models/Message.js
 const mongoose = require('mongoose');
 
 const MessageSchema = new mongoose.Schema({
   content: {
     type: String,
-    required: true
+    required: function() {
+      return this.type === 'text';
+    }
+  },
+  type: {
+    type: String,
+    enum: ['text', 'image', 'file', 'system'],
+    default: 'text'
+  },
+  fileUrl: {
+    type: String,
+    required: function() {
+      return this.type === 'image' || this.type === 'file';
+    }
+  },
+  fileName: {
+    type: String
   },
   group: {
     type: mongoose.Schema.Types.ObjectId,
@@ -22,11 +39,9 @@ const MessageSchema = new mongoose.Schema({
   deletedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Message', MessageSchema);
