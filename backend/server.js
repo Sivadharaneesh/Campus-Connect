@@ -5,14 +5,18 @@ const http = require('http');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
-const authRoutes = require("./routes/auth");
+const bcrypt = require("bcryptjs");
 const socketIo = require('socket.io');
+
+// Import routes
+const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const dashboardRoutes = require("./routes/dashboard");
+
+// Import models
 const User = require('./models/User');
 const Message = require('./models/Message');
 const Group = require('./models/Group');
-const bcrypt = require("bcryptjs");
 
 require("dotenv").config();
 
@@ -68,9 +72,12 @@ const upload = multer({
 });
 
 // Connect to MongoDB
-const uri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/dashboard";
+const uri = process.env.MONGODB_URI || process.env.MONGO_URI || "mongodb://127.0.0.1:27017/dashboard";
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+})
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error(err));
 
@@ -80,6 +87,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use('/api/users', require('./routes/users'));
 app.use('/api/groups', require('./routes/groups'));
+app.use('/api/admin', require('./routes/admin'));
 
 // File upload endpoint
 app.post('/api/upload', upload.single('file'), (req, res) => {

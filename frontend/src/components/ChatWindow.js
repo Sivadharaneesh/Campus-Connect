@@ -68,7 +68,12 @@ const ChatWindow = ({ group, onBack }) => {
       
       // Listen for new messages
       newSocket.on('new message', (message) => {
-        setMessages(prev => [...prev, message]);
+        // Only add message if it has a valid sender
+        if (message && message.sender) {
+          setMessages(prev => [...prev, message]);
+        } else {
+          console.warn('Received message with invalid sender:', message);
+        }
       });
       
       // Listen for deleted messages
@@ -218,10 +223,15 @@ const ChatWindow = ({ group, onBack }) => {
           </div>
         ) : (
           messages.map(message => (
-            <div key={message._id} className={`message ${message.sender._id === currentUser._id ? 'own-message' : ''}`}>
+            <div key={message._id} className={`message ${message.sender && message.sender._id === currentUser._id ? 'own-message' : ''}`}>
               <div className="message-header">
-                <div className="message-sender">{message.sender.username}</div>
-                <div className="message-time">{new Date(message.createdAt).toLocaleTimeString()}</div>
+                <div className="message-sender">
+                  {/* Safe access to sender properties */}
+                  {message.sender?.username || 'Unknown User'}
+                </div>
+                <div className="message-time">
+                  {new Date(message.createdAt).toLocaleTimeString()}
+                </div>
                 {currentUser.isAdmin && (
                   <button 
                     onClick={() => deleteMessage(message._id)}
