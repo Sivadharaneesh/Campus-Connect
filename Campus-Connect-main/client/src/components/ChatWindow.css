@@ -1,0 +1,400 @@
+/* ================= ChatWindow.css ================= */
+.chat-window-full {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #f0f2f5;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ================= No Group Selected ================= */
+.no-group-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #888;
+  font-size: 1.2rem;
+}
+
+/* ================= Chat Header ================= */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #1877f2;
+}
+
+.back-button:hover {
+  background-color: #f0f2f5;
+}
+
+.group-info {
+  flex: 1;
+}
+
+.group-info h2 {
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+  color: #1c1e21;
+}
+
+.group-info p {
+  margin: 0;
+  color: #000000;
+  font-size: 0.9rem;
+}
+
+/* ================= Messages ================= */
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #f0f2f5;
+  transition: background-color 0.3s;
+}
+
+.no-messages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #8a8d91;
+  font-size: 1.1rem;
+}
+
+.message {
+  max-width: 70%;
+  padding: 12px 16px;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.own-message {
+  background-color: #1877f2;
+  color: white;
+  align-self: flex-end;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}
+
+.message-sender {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.own-message .message-sender {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.message-time {
+  color: #8a8d91;
+  font-size: 0.75rem;
+}
+
+.own-message .message-time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.delete-message-btn {
+  background: none;
+  border: none;
+  color: #f44336;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: auto;
+  padding: 0 5px;
+}
+
+.own-message .delete-message-btn {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.message p {
+  margin: 0;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* ================= Media ================= */
+.message-image img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.message-file a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.own-message .message-file a {
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.file-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ================= Form ================= */
+.message-form {
+  padding: 15px 20px;
+  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji-btn, .upload-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.emoji-btn:hover, .upload-btn:hover {
+  background-color: #f0f2f5;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #dddfe2;
+  border-radius: 20px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.message-input:focus {
+  border-color: #1877f2;
+}
+
+.send-btn {
+  padding: 10px 20px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+  background-color: #166fe5;
+}
+
+.send-btn:disabled {
+  background-color: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+}
+
+/* ================= Emoji Picker ================= */
+.emoji-picker-container {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ================= Scrollbar ================= */
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* ================= Dark Mode ================= */
+.dark-mode .chat-window-full {
+  background-color: #18191a;
+  color: #e4e6eb;
+}
+
+.dark-mode .chat-header {
+  background-color: #242526;
+  color: #e4e6eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .back-button {
+  color: #4e9af1;
+}
+
+.dark-mode .back-button:hover {
+  background-color: #3a3b3c;
+}
+
+.dark-mode .messages-container {
+  background-color: #18191a;
+}
+
+.dark-mode .message {
+  background-color: #242526;
+  color: #e4e6eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .own-message {
+  background-color: #3a3b3c;
+  color: #e4e6eb;
+}
+
+.dark-mode .message-input,
+.dark-mode .message-form {
+  background-color: #242526;
+  border-color: #3a3b3c;
+  color: #e4e6eb;
+}
+
+.dark-mode .emoji-btn:hover,
+.dark-mode .upload-btn:hover {
+  background-color: #3a3b3c;
+}
+
+.dark-mode .send-btn {
+  background-color: #4e9af1;
+}
+
+.dark-mode .send-btn:hover:not(:disabled) {
+  background-color: #3a7bd1;
+}
+
+.dark-mode .message-time {
+  color: #b0b3b8;
+}
+
+.dark-mode .message-sender {
+  color: #58a6ff;
+}
+
+.dark-mode .delete-message-btn {
+  color: #ff6b6b;
+}
+
+.dark-mode .message-file a {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e4e6eb;
+}
+
+.dark-mode .file-size {
+  opacity: 0.7;
+}
+
+.dark-mode  .group-info h2 {
+  margin: 0;
+  color: #fbf5f5;
+  font-size: 1.5rem;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 768px) {
+  .chat-header {
+    padding: 12px 15px;
+  }
+  
+  .group-info h2 {
+    font-size: 1.2rem;
+  }
+  
+  .messages-container {
+    padding: 15px;
+  }
+  
+  .message {
+    max-width: 85%;
+  }
+  
+  .message-form {
+    padding: 12px 15px;
+  }
+  
+  .emoji-btn, .upload-btn {
+    font-size: 1.3rem;
+  }
+  
+  .message-input {
+    padding: 10px 12px;
+  }
+  
+  .send-btn {
+    padding: 8px 16px;
+  }
+}

@@ -1,0 +1,508 @@
+/* ================= Dashboard Layout ================= */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #24292f;
+  box-sizing: border-box;
+}
+
+/* ================= Header ================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #24292f;
+  color: #fff;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info span {
+  font-weight: 500;
+}
+
+.user-info a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-info a:hover {
+  text-decoration: underline;
+}
+
+.user-info button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #ff6b6b;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.user-info button:hover {
+  background-color: #e03e3e;
+}
+
+/* ================= Tabs ================= */
+.dashboard-tabs {
+  gap: 1rem;
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid #d1d5da;
+  background-color: #fff;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #e1e4e8;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.tab-button.active {
+  background-color: #0366d6;
+  color: #fff;
+}
+
+.tab-button:hover:not(.active) {
+  background-color: #cfd4da;
+}
+
+/* ================= Dashboard Content ================= */
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ================= Sidebar (Groups) ================= */
+.group-list {
+  width: 260px;
+  background-color: #fff;
+  border-right: 1px solid #d1d5da;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.group-list h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.group-search {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5da;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.group-search:focus {
+  border-color: #0366d6;
+  box-shadow: 0 0 0 2px rgba(3,102,214,0.2);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ================= Main Content ================= */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  background-color: #f5f6fa;
+}
+
+/* ================= Chat Window Container ================= */
+.chat-window-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d1d5da;
+  margin-bottom: 1rem;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.chat-header p {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.85rem;
+  color: #586069;
+}
+
+/* ================= No Group Selected ================= */
+.no-group-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: #586069;
+  text-align: center;
+}
+
+.no-group-selected .icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ================= Posts Container ================= */
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ================= Loading / Error Messages ================= */
+.loading, .error-message, .no-posts {
+  text-align: center;
+  color: #586069;
+  padding: 1rem;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .group-list {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #d1d5da;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .dashboard-tabs {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* ================= Post List ================= */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ================= Individual Post Item ================= */
+.post-item {
+  display: flex;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.2s;
+  flex-wrap: wrap;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.post-votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.post-votes button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+.post-votes button.active {
+  color: #0366d6;
+}
+
+.score {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #24292f;
+}
+
+.post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ================= Post Text ================= */
+.post-content h4 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #0366d6;
+}
+
+.post-content p {
+  margin: 0;
+  font-size: 1rem;
+  color: #24292f;
+  line-height: 1.5;
+}
+
+/* ================= Post Media (Big Square) ================= */
+.post-media-container {
+  width: 100%;
+  max-width: 600px;       /* Max width of post media */
+  height: 400px;          /* Big square container */
+  margin: 0.5rem auto;    /* Center horizontally */
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.post-media-container img,
+.post-media-container video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .post-media-container {
+    max-width: 100%;
+    height: 300px;
+  }
+}
+
+/* ================= Post Meta ================= */
+.post-meta {
+  font-size: 0.85rem;
+  color: #586069;
+  display: flex;
+  gap: 1rem;
+}
+
+.post-meta span {
+  font-weight: 500;
+}
+
+/* ================= Post Actions ================= */
+.post-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.post-actions button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.post-actions button:hover {
+  background-color: #e0e0e0;
+}
+
+/* ================= Comments Section ================= */
+.comment-section {
+  margin-top: 0.75rem;
+  border-top: 1px solid #e1e4e8;
+  padding-top: 0.5rem;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .post-item {
+    flex-direction: column;
+  }
+
+  .post-votes {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ================= Dark Mode ================= */
+.dashboard.dark-mode {
+  background-color: #121212;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .dashboard-header {
+  background-color: #1e1e1e;
+  color: #e4e6eb;
+  border-bottom: 1px solid #333;
+}
+
+.dashboard.dark-mode .user-info a {
+  color: #58a6ff;
+}
+
+.dashboard.dark-mode .user-info button {
+  background-color: #ff4c4c;
+  color: #fff;
+}
+
+.dashboard.dark-mode .user-info button:hover {
+  background-color: #e03e3e;
+}
+
+.dashboard.dark-mode .dashboard-tabs {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+.dashboard.dark-mode .tab-button {
+  background-color: #2c2c2c;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .tab-button.active {
+  background-color: #0366d6;
+  color: #fff;
+}
+
+.dashboard.dark-mode .tab-button:hover:not(.active) {
+  background-color: #3a3a3a;
+}
+
+.dashboard.dark-mode .group-list {
+  background-color: #1e1e1e;
+  border-right: 1px solid #333;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .group-search {
+  background-color: #2c2c2c;
+  border: 1px solid #555;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .group-search:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 2px rgba(88,166,255,0.2);
+}
+
+.dashboard.dark-mode .main-content {
+  background-color: #181818;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .chat-header p {
+  color: #aaa;
+}
+
+.dashboard.dark-mode .no-group-selected {
+  color: #aaa;
+}
+
+.dashboard.dark-mode .posts-container {
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .post-item {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.dashboard.dark-mode .post-item:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.dashboard.dark-mode .post-votes button {
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .post-votes button.active {
+  color: #58a6ff;
+}
+
+.dashboard.dark-mode .score {
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .post-content h4 {
+  color: #58a6ff;
+}
+
+.dashboard.dark-mode .post-content p {
+  color: #ddd;
+}
+
+.dashboard.dark-mode .post-media-container {
+  background-color: #2c2c2c;
+}
+
+.dashboard.dark-mode .post-meta {
+  color: #aaa;
+}
+
+.dashboard.dark-mode .post-actions button {
+  background-color: #2c2c2c;
+  color: #e4e6eb;
+}
+
+.dashboard.dark-mode .post-actions button:hover {
+  background-color: #3a3a3a;
+}
+
+.dashboard.dark-mode .comment-section {
+  border-top: 1px solid #333;
+}
+
